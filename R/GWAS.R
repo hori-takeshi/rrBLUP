@@ -120,6 +120,10 @@ for (i in 1:m) {
 
   	Mi <- M[,i]
 	freq <- mean(Mi+1,na.rm=TRUE)/2
+	if (is.na(freq)) {
+	   scores[i] <- NA
+	   next
+	}
 	MAF <- min(freq,1-freq)
     if (MAF >= min.MAF) {
 		not.NA.gid <- which(!is.na(Mi))
